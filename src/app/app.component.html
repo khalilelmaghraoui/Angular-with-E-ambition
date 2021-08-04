@@ -1,0 +1,36 @@
+<!-- selector by element -->
+
+<!-- <server-comp></server-comp>
+<hr />
+<server-comp></server-comp> -->
+
+<!-- selector by attribut -->
+
+<!-- <div server-comp></div>
+<hr /> -->
+
+<!-- selector by class     -->
+
+<!-- <div class="server-comp"></div> -->
+
+<app-servers></app-servers>
+
+<label>username</label>
+<input
+  type="text"
+  value="username"
+  class="form-control"
+  [(ngModel)]="username"
+/>
+<p>{{ username }}</p>
+<button
+  class="btn btn-primary"
+  [disabled]="username === ''"
+  (click)="username = ''"
+>
+  reset
+</button>
+<p *ngIf="username; else templateName"></p>
+<ng-template #templateName>
+  <p>hello</p>
+</ng-template>

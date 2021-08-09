@@ -1,36 +1,52 @@
-<!-- selector by element -->
+<script src="js/jquery-1.11.2.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<div class="container">
+  <div class="row">
+    <div class="col-12"><app-header></app-header></div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <app-recipes></app-recipes>
+    </div>
+    <div></div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <app-shopping-list></app-shopping-list>
+    </div>
+  </div>
 
-<!-- <server-comp></server-comp>
-<hr />
-<server-comp></server-comp> -->
-
-<!-- selector by attribut -->
-
-<!-- <div server-comp></div>
-<hr /> -->
-
-<!-- selector by class     -->
-
-<!-- <div class="server-comp"></div> -->
-
-<app-servers></app-servers>
-
-<label>username</label>
-<input
-  type="text"
-  value="username"
-  class="form-control"
-  [(ngModel)]="username"
-/>
-<p>{{ username }}</p>
-<button
-  class="btn btn-primary"
-  [disabled]="username === ''"
-  (click)="username = ''"
->
-  reset
-</button>
-<p *ngIf="username; else templateName"></p>
-<ng-template #templateName>
-  <p>hello</p>
-</ng-template>
+  <div class="row">
+    <div class="col-6">
+      <app-cockpit
+        (serverCreated)="OnServerAdd($event)"
+        (bluePrintCreated)="OnServerAdd($event)"
+      ></app-cockpit>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-6">
+        <app-server
+          *ngFor="let serverElement of serverElements"
+          [element]="serverElement"
+        >
+          <p>
+            <strong
+              *ngIf="serverElement.type === 'server'"
+              style="color: red"
+              >{{ serverElement.content }}</strong
+            >
+            <em
+              *ngIf="serverElement.type === 'blueprint'"
+              style="color: blue"
+              >{{ serverElement.content }}</em
+            >
+          </p>
+        </app-server>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  //selector: 'server-comp',
-  // selector: '[server-comp]',
-  selector: '.server-comp',
+  selector: 'app-server',
   templateUrl: './server.component.html',
   styleUrls: ['./server.component.css']
 })
-export class ServerComponent {}
+export class ServerComponent implements OnInit {
+  @Input() element!: { type: string; name: string; content: string };
+  constructor() {}
+
+  ngOnInit(): void {}
+}

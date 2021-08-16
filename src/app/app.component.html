@@ -1,52 +1,9 @@
-<script src="js/jquery-1.11.2.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<app-header (headerEvent)="onNavigate('recipe')"></app-header>
 <div class="container">
   <div class="row">
-    <div class="col-12"><app-header></app-header></div>
-  </div>
-</div>
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <app-recipes></app-recipes>
-    </div>
-    <div></div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <app-shopping-list></app-shopping-list>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-6">
-      <app-cockpit
-        (serverCreated)="OnServerAdd($event)"
-        (bluePrintCreated)="OnServerAdd($event)"
-      ></app-cockpit>
-    </div>
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-6">
-        <app-server
-          *ngFor="let serverElement of serverElements"
-          [element]="serverElement"
-        >
-          <p>
-            <strong
-              *ngIf="serverElement.type === 'server'"
-              style="color: red"
-              >{{ serverElement.content }}</strong
-            >
-            <em
-              *ngIf="serverElement.type === 'blueprint'"
-              style="color: blue"
-              >{{ serverElement.content }}</em
-            >
-          </p>
-        </app-server>
-      </div>
+    <div class="col-md-12">
+      <app-recipes *ngIf="category === 'recipe'"></app-recipes>
+      <app-shopping-list *ngIf="category !== 'recipe'"></app-shopping-list>
     </div>
   </div>
 </div>

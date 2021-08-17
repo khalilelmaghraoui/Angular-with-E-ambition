@@ -1,9 +1,9 @@
-<app-header (headerEvent)="onNavigate('recipe')"></app-header>
+<app-header (category)="onNavigate($event)"></app-header>
 <div class="container">
   <div class="row">
     <div class="col-md-12">
       <app-recipes *ngIf="category === 'recipe'"></app-recipes>
-      <app-shopping-list *ngIf="category !== 'recipe'"></app-shopping-list>
+      <app-shopping-list *ngIf="category === 'shopping'"></app-shopping-list>
     </div>
   </div>
 </div>

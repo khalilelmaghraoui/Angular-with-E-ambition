@@ -1,36 +1,13 @@
-<!-- selector by element -->
-
-<!-- <server-comp></server-comp>
-<hr />
-<server-comp></server-comp> -->
-
-<!-- selector by attribut -->
-
-<!-- <div server-comp></div>
-<hr /> -->
-
-<!-- selector by class     -->
-
-<!-- <div class="server-comp"></div> -->
-
-<app-servers></app-servers>
-
-<label>username</label>
-<input
-  type="text"
-  value="username"
-  class="form-control"
-  [(ngModel)]="username"
-/>
-<p>{{ username }}</p>
-<button
-  class="btn btn-primary"
-  [disabled]="username === ''"
-  (click)="username = ''"
->
-  reset
-</button>
-<p *ngIf="username; else templateName"></p>
-<ng-template #templateName>
-  <p>hello</p>
-</ng-template>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-8 col-md-offset-2">
+      <app-new-account (accountAdded)="onAccountAdded($event)"></app-new-account>
+      <hr>
+      <app-account
+        *ngFor="let acc of accounts; let i = index"
+        [account]="acc"
+        [id]="i"
+        (statusChanged)="onStatusChanged($event)"></app-account>
+    </div>
+  </div>
+</div>
